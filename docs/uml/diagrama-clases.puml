@@ -1,0 +1,62 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Database {
+  -conexion: PDO
+  +__construct()
+  +getConexion(): PDO
+}
+
+class Tienda {
+  -conexion: PDO
+  -id_tienda: string
+  -nombre_tienda: string
+  -direcc_tienda: string
+  -ciudad: string
+  -estado: string
+  -pais: string
+  -cod_postal: string
+  -terminos: string
+  +__construct(conexion: PDO)
+  +getAll(): array
+  +getById(id_tienda: string): array
+  +create(datos: array): bool
+  +update(id_tienda: string, datos: array): bool
+  +delete(id_tienda: string): bool
+}
+
+class Titulo {
+  -conexion: PDO
+  -id_titulo: string
+  -titulo: string
+  -tipo: string
+  -id_pub: string
+  -precio: float
+  -avance: float
+  -total_ventas: int
+  -notas: string
+  -fecha_pub: string
+  -contrato: string
+  +__construct(conexion: PDO)
+  +getAll(): array
+  +getById(id_titulo: string): array
+  +create(datos: array): bool
+  +update(id_titulo: string, datos: array): bool
+  +delete(id_titulo: string): bool
+}
+
+class Publicador {
+  -conexion: PDO
+  -id_pub: string
+  -nombre_pub: string
+  -ciudad: string
+  -estado: string
+  +__construct(conexion: PDO)
+  +getAll(): array
+}
+
+Database "1" --> "*" Tienda : provee conexión
+Database "1" --> "*" Titulo : provee conexión
+Database "1" --> "*" Publicador : provee conexión
+Publicador "1" -- "*" Titulo : publica
+@enduml
