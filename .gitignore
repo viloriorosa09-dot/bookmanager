@@ -1,0 +1,17 @@
+# Credenciales locales: NUNCA subir
+config/config.local.php
+.env
+
+# Dependencias y sistema
+vendor/
+node_modules/
+.DS_Store
+Thumbs.db
+
+# Editores
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Exportaciones de UML
+docs/uml/*.png
