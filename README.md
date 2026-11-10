@@ -8,11 +8,11 @@ Administrar tres tablas de la base de datos `dblibreria` con un CRUD completo: *
 
 ## Equipo
 
-| Integrante | Rol |
-| --- | --- |
-| Wilber Vilorio Rosa | Líder, base de datos, seguridad y UML |
-| Integrante 2 | Modelos y CRUD de Títulos |
-| Integrante 3 | Plantilla, interfaz y despliegue |
+| Integrante | CRUD | Apoyo |
+| --- | --- | --- |
+| **Wilber Vilorio Rosa** | Tiendas | Base de datos, interfaces y UML |
+| **Reyna Elizabeth** | Publicadores | Plantilla, menú e interfaz |
+| **Charlie** | Títulos | Despliegue en InfinityFree |
 
 ## Tecnologías
 
@@ -23,15 +23,20 @@ Administrar tres tablas de la base de datos `dblibreria` con un CRUD completo: *
 
 ## Qué debe tener el sistema
 
-- [ ] Clase `Database` que crea la conexión PDO
-- [ ] Interfaces `ListableInterface` y `CrudInterface`
-- [ ] Modelos `Tienda`, `Publicador` y `Titulo`
-- [ ] CRUD completo de Tiendas y Títulos (listar, crear, editar, eliminar)
-- [ ] Listado de Publicadores, usado en un `<select>` al crear títulos
-- [ ] Interfaz con la plantilla, menú único y diseño uniforme
-- [ ] Sitio publicado en InfinityFree
-- [ ] Diagrama UML de clases
-- [ ] Documentación en PDF (2 a 3 páginas)
+| Entregable | Responsable |
+| --- | --- |
+| Clase `Database` (conexión PDO) | Wilber |
+| Interfaces `ListableInterface` y `CrudInterface` | Wilber |
+| CRUD de Tiendas | Wilber |
+| Diagrama UML de clases | Wilber |
+| CRUD de Publicadores | Reyna Elizabeth |
+| Plantilla, menú e interfaz uniforme | Reyna Elizabeth |
+| CRUD de Títulos con `<select>` de editoriales | Charlie |
+| Sitio publicado en InfinityFree | Charlie |
+| PDF: base de datos y UML | Wilber |
+| PDF: descripción y diseño | Reyna Elizabeth |
+| PDF: arquitectura POO y capturas | Charlie |
+| PDF: armado final y revisión | Wilber |
 
 ## Cómo se evalúa
 
@@ -106,7 +111,7 @@ App en `http://localhost:8080` y phpMyAdmin en `http://localhost:8081` (usuario 
 
 ## Documentación PDF
 
-Cada integrante redacta la parte de lo que construyó y uno solo lo arma al final. Contiene: portada, descripción, base de datos y UML, arquitectura POO, capturas del CRUD con el enlace en línea, y conclusiones.
+El profesor pidió un PDF de 2 a 3 páginas. Cada integrante redacta la parte de lo que construyó y Wilber lo arma al final. Contiene: portada, descripción, base de datos y UML, arquitectura POO, capturas del CRUD con el enlace en línea, y conclusiones.
 
 ## Lista final de entrega
 
