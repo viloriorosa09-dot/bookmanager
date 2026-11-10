@@ -1,6 +1,17 @@
 @startuml
 skinparam classAttributeIconSize 0
 
+interface ListableInterface {
+  +getAll(): array
+}
+
+interface CrudInterface {
+  +getById(id: string): array
+  +create(datos: array): bool
+  +update(id: string, datos: array): bool
+  +delete(id: string): bool
+}
+
 class Database {
   -conexion: PDO
   +__construct()
@@ -54,6 +65,11 @@ class Publicador {
   +__construct(conexion: PDO)
   +getAll(): array
 }
+
+ListableInterface <|-- CrudInterface
+CrudInterface <|.. Tienda
+CrudInterface <|.. Titulo
+ListableInterface <|.. Publicador
 
 Database "1" --> "*" Tienda : provee conexión
 Database "1" --> "*" Titulo : provee conexión
