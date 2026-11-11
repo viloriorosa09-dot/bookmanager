@@ -14,6 +14,18 @@ Administrar tres tablas de la base de datos `dblibreria` con un CRUD completo: *
 | **Reyna Elizabeth** | Publicadores | Plantilla, menú e interfaz |
 | **Charlie** | Títulos | Despliegue en InfinityFree |
 
+## Empieza aquí
+
+Cada integrante tiene su guía con pasos por semana:
+
+| Integrante | Guía |
+| --- | --- |
+| Wilber | [`docs/guias/wilber.md`](docs/guias/wilber.md) |
+| Reyna Elizabeth | [`docs/guias/reyna-elizabeth.md`](docs/guias/reyna-elizabeth.md) |
+| Charlie | [`docs/guias/charlie.md`](docs/guias/charlie.md) |
+
+Los planes semanales están en [`docs/semanas/`](docs/semanas/).
+
 ## Tecnologías
 
 - PHP 8.2 (POO estricta) y PDO con consultas preparadas
@@ -38,6 +50,19 @@ Administrar tres tablas de la base de datos `dblibreria` con un CRUD completo: *
 | PDF: arquitectura POO y capturas | Charlie |
 | PDF: armado final y revisión | Wilber |
 
+## Clases por persona
+
+| Clase o interfaz | Archivo | Responsable |
+| --- | --- | --- |
+| `Database` | `config/database.php` | Wilber |
+| `ListableInterface` | `interfaces/ListableInterface.php` | Wilber |
+| `CrudInterface` | `interfaces/CrudInterface.php` | Wilber |
+| `Tienda` | `models/Tienda.php` | Wilber |
+| `Publicador` | `models/Publicador.php` | Reyna Elizabeth |
+| `Titulo` | `models/Titulo.php` | Charlie |
+
+`Titulo` usa `Publicador::getAll()` para el `<select>` de editoriales, así que Reyna Elizabeth sube primero ese método.
+
 ## Cómo se evalúa
 
 | Criterio | Puntos |
@@ -55,13 +80,17 @@ bookmanager/
 ├── .devcontainer/      Codespaces
 ├── config/             conexión a la base de datos
 ├── database/           dblibreria.sql
-├── docs/               UML, planes semanales, reparto y PDF
+├── docs/
+│   ├── guias/          guía de cada integrante
+│   ├── semanas/        plan de las semanas 1, 2 y 3
+│   └── uml/            diagrama de clases
 ├── interfaces/         ListableInterface, CrudInterface
-├── models/             Tienda, Publicador, Titulo
-├── views/              pantallas de cada módulo
-├── includes/           header y footer comunes
-├── assets/             plantilla (css, js, img)
-├── index.php
+├── models/             (por crear) Tienda, Publicador, Titulo
+├── views/              (por crear) pantallas de cada módulo
+├── includes/           (por crear) header y footer comunes
+├── assets/             (por crear) plantilla
+├── index.php           (por crear)
+├── test-conexion.php   temporal; se borra en la semana 3
 ├── Dockerfile
 └── docker-compose.yml
 ```
@@ -75,7 +104,7 @@ bookmanager/
 
 ### Opción 2: Docker local
 ```bash
-git clone <URL-del-repo>
+git clone https://github.com/viloriorosa09-dot/bookmanager.git
 cd bookmanager
 docker compose up --build
 ```
