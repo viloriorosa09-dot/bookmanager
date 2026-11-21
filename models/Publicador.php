@@ -1,0 +1,81 @@
+<?php
+
+require_once __DIR__ . '/../interfaces/ListableInterface.php';
+require_once __DIR__ . '/../interfaces/CrudInterface.php';
+
+class Publicador implements CrudInterface
+{
+    private $db;
+
+    public function __construct($db)
+    {
+        $this->db = $db;
+    }
+
+    public function getAll(): array
+    {
+        $sql = "SELECT * FROM publicadores";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
+    public function getById(string $id): ?array
+    {
+        $sql = "SELECT * FROM publicadores WHERE id_pub = :id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([':id' => $id]);
+        $resultado = $stmt->fetch();
+
+        if ($resultado) {
+            return $resultado;
+        } else {
+            return null;
+        }
+    }
+
+    public function create(array $datos): bool
+    {
+        $sql = "INSERT INTO publicadores (id_pub, nombre_pub, ciudad, estado) VALUES (:id_pub, :nombre_pub, :ciudad, :estado)";
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute([
+            ':id_pub' => $datos['id_pub'],
+            ':nombre_pub' => $datos['nombre_pub'],
+            ':ciudad' => $datos['ciudad'],
+            ':estado' => $datos['estado']
+        ]);
+    }
+
+    public function update(string $id, array $datos): bool
+    {
+        $sql = "UPDATE publicadores SET nombre_pub = :nombre_pub, ciudad = :ciudad, estado = :estado WHERE id_pub = :id";
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute([
+            ':nombre_pub' => $datos['nombre_pub'],
+            ':ciudad' => $datos['ciudad'],
+            ':estado' => $datos['estado'],
+            ':id' => $id
+        ]);
+    }
+
+    public function delete(string $id): bool
+    {
+        $sql = "DELETE FROM publicadores WHERE id_pub = :id";
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute([':id' => $id]);
+    }
+
+    public function tieneTitulos($id)
+    {
+        $sql = "SELECT COUNT(*) FROM titulos WHERE id_pub = :id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([':id' => $id]);
+        $cantidad = $stmt->fetchColumn();
+
+        if ($cantidad > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
