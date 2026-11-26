@@ -30,7 +30,7 @@ Los planes semanales están en [`docs/semanas/`](docs/semanas/).
 
 - PHP 8.2 (POO estricta) y PDO con consultas preparadas
 - MySQL 8 (`dblibreria`)
-- Bootstrap (plantilla SB Admin 2)
+- Bootstrap 4 (plantilla StartBootstrap SB Admin 2)
 - Docker, Codespaces y PlantUML
 
 ## Qué debe tener el sistema
@@ -85,11 +85,11 @@ bookmanager/
 │   ├── semanas/        plan de las semanas 1, 2 y 3
 │   └── uml/            diagrama de clases
 ├── interfaces/         ListableInterface, CrudInterface
-├── models/             (por crear) Tienda, Publicador, Titulo
-├── views/              (por crear) pantallas de cada módulo
-├── includes/           (por crear) header y footer comunes
-├── assets/             (por crear) plantilla
-├── index.php           (por crear)
+├── models/             Tienda, Publicador, Titulo
+├── views/              pantallas de cada módulo
+├── includes/           app.php, header.php y footer.php
+├── assets/             plantilla SB Admin 2 (css, js, vendor, img)
+├── index.php           página de inicio con resumen
 ├── test-conexion.php   temporal; se borra en la semana 3
 ├── Dockerfile
 └── docker-compose.yml
