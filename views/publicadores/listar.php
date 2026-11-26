@@ -49,7 +49,10 @@ $lista = $publicador->getAll();
                             <td><?php echo htmlspecialchars($fila['estado']); ?></td>
                             <td>
                                 <a href="editar.php?id=<?php echo htmlspecialchars($fila['id_pub']); ?>" class="btn btn-warning btn-sm">Editar</a>
-                                <a href="eliminar.php?id=<?php echo htmlspecialchars($fila['id_pub']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('¿Seguro que quieres eliminar este publicador?');">Eliminar</a>
+                                <form method="POST" action="eliminar.php" class="d-inline" onsubmit="return confirm('¿Seguro que quieres eliminar este publicador?');">
+                                    <input type="hidden" name="id_pub" value="<?php echo htmlspecialchars($fila['id_pub']); ?>">
+                                    <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                </form>
                             </td>
                         </tr>
                     <?php } ?>
