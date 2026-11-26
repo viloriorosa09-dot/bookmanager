@@ -3,7 +3,7 @@ config/config.local.php
 .env
 
 # Dependencias y sistema
-vendor/
+/vendor/
 node_modules/
 .DS_Store
 Thumbs.db
