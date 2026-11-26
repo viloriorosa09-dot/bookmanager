@@ -78,4 +78,41 @@ class Publicador implements CrudInterface
             return false;
         }
     }
+
+    public static function depurar(array $post): array
+    {
+        $datos = [];
+        foreach (['id_pub', 'nombre_pub', 'ciudad', 'estado'] as $campo) {
+            $datos[$campo] = trim((string) ($post[$campo] ?? ''));
+        }
+        $datos['estado'] = strtoupper($datos['estado']);
+        return $datos;
+    }
+
+    public static function validar(array $datos, bool $validarId): array
+    {
+        $errores = [];
+
+        if ($validarId && !preg_match('/^[A-Za-z0-9]{1,4}$/', $datos['id_pub'])) {
+            $errores[] = 'El ID debe tener de 1 a 4 letras o números.';
+        }
+
+        $limites = [
+            'nombre_pub' => ['Nombre', 30],
+            'ciudad'     => ['Ciudad', 15],
+        ];
+        foreach ($limites as $campo => [$etiqueta, $maximo]) {
+            if ($datos[$campo] === '') {
+                $errores[] = "El campo $etiqueta es obligatorio.";
+            } elseif (mb_strlen($datos[$campo]) > $maximo) {
+                $errores[] = "El campo $etiqueta admite como máximo $maximo caracteres.";
+            }
+        }
+
+        if (!preg_match('/^[A-Z]{2}$/', $datos['estado'])) {
+            $errores[] = 'El estado debe tener exactamente 2 letras.';
+        }
+
+        return $errores;
+    }
 }
